@@ -2,7 +2,7 @@
   "name": "electron_network",
   "version": "0.1.0",
   "private": true,
-  "main": "main.js",
+  "main": "demo/index.js",
   "homepage": ".",
   "dependencies": {
     "electron": "^5.0.6",

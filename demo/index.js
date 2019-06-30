@@ -1,6 +1,6 @@
 // 引入eletron 创建一个BrowserWindow对象
 const { app, BrowserWindow } = require('electron');
-// const path = require('path');
+const path = require('path');
 // const url = require('url');
 
 // 保持window对象的全局引用,避免JavaScript对象被垃圾回收了，造成窗口关闭
@@ -17,17 +17,7 @@ function createWindow () {
     }
   });
 
-
-  // 加载应用----react 打包 electron-quick-start中默认的加载入口
-  // mainWindow.loadURL(url.format({
-  //   pathname: path.join(__dirname, './build/index.html'),
-  //   protocol: 'file:',
-  //   slashes: true
-  // }))
-  // 加载应用----适用于 react:端口 开发时项目
-  // mainWindow.loadURL('http://localhost:3000/');
-
-  mainWindow.loadURL('http://localhost:3000/');
+  mainWindow.loadURL(path.join('file:', __dirname, './index.js'))
 
   // 打开开发者工具，默认不打开
   mainWindow.webContents.openDevTools();
