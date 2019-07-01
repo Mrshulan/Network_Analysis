@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div class='wrapper'>
+    <button id="send">在 渲染进程中执行主进程里的方法（异步）</button> <br />
+    <button id="sendSync">渲染进程和主进程同步通信</button> <br />
+
+    <label for="url">
+      请输入搜索路径
+      <input id='url' name='url' type="text">
+    </label>
+    <button id='sendFeedback'>发送</button>
+  </div>
+
+  <script src='./src/render/ipcrender.js'></script>
+</body>
+</html>

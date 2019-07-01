@@ -4,10 +4,42 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>首页</title>
 </head>
 <body>
-  Electron is here <button id="btn">点击开启新渲染进程</button>
-  <script src="./render/index.js"></script>
+  <div>
+    electron is here 
+    <button id="btn" >打开news</button> <br/>
+    <button id="send">在 渲染进程中执行主进程里的方法（异步）</button> <br />
+    <button id="sendFeedback">在 渲染进程中执行主进程里的方法，并反馈给主进程（异步）</button> <br />
+    <button id="sendSync">渲染进程和主进程同步通信</button> <br />
+    <button id="openWindow">打开新窗口通信</button> <br />
+    <button id="shellDom">通过shell打开外部链接</button><br />
+    <!-- dialog -->
+    <button id="showError">showError</button><br />
+    <button id="showMsg">showMsg</button><br />
+    <button id="showOpenDialog">showOpenDialog</button><br />
+    <button id="saveDialog">saveDialog</button><br />
+    <!-- dialog -->
+    <button id="showNotification">弹出消息通知</button><br />
+    <div>
+      <h2>双击下面信息复制</h2>
+      <p id='msg'>123456789</p>
+      <button id="plat">粘贴</button><br />
+      <input id="text" type="text"/>
+    </div>.
+    <div>
+      <h2>复制图片到界面</h2>
+      <button id="copyImg">复制图片</button><br />
+    </div>
+
+  </div>
+  <script src='render/subBrowserWindow.js'></script>
+  <script src="render/ipcrender.js"></script>
+  <script src="render/openWindow.js"></script>
+  <script src="render/shell.js"></script>
+  <script src="render/dialog.js"></script>
+  <script src='render/notification.js'></script>
+  <script src='render/clipboard.js'></script>
 </body>
 </html>
