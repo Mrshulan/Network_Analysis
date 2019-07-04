@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import SearchView from './components/search';
 import Layout from './components/layout';
 import ResultView from './components/result';
-// import { networkToRequest, performanceParser } from './util/help';
+import { networkToRequest, performanceParser } from './util/help';
 
-// const { ipcRenderer } = window.require('electron');
+const { ipcRenderer } = window.require('electron');
 function App() {
   const [ requestRes, setRequestRes ] = useState([
     {
@@ -15,15 +15,6 @@ function App() {
       receiveHeadersEnd: 107.011,
       status: 200,
       url: "https://www.baidu.com/",
-    },
-    {
-      contentLength: "7877",
-      mimeType: "image/png",
-      name: "bd_logo1.png",
-      protocol: "http/1.1",
-      receiveHeadersEnd: 0.645,
-      status: 200,
-      url: "https://www.baidu.com/img/bd_logo1.png",
     }
   ]);
   const [ performanceRes, setPerformanceRes ] = useState({
@@ -37,23 +28,26 @@ function App() {
   });
   
   const requestToRes = (target_url) => {
-   
-    // ipcRenderer.send('sendFeedback', target_url)
-    // ipcRenderer.on('sendFeedbackToRender', (e, data) => {
-    //   // TODO将数据传入上层
-    //   let requestRes = networkToRequest(data.success);
-    //   let performanceRes = performanceParser(data.performanceInfo);
-      
-      console.log('requestRes\n', requestRes);
-      console.log('performanceRes\n', performanceRes);
-    // }) 
+    console.log(`正在查询${target_url}`);
+    ipcRenderer.send('sendFeedback', target_url);
+    ipcRenderer.on('sendFeedbackToRender', (e, data) => {
+      let requestRes = networkToRequest(data.success);
+      let performanceRes = performanceParser(data.performanceInfo);
+      setRequestRes(requestRes);
+      setPerformanceRes(performanceRes);
+      // console.log('requestRes\n', requestRes);
+      // console.log('performanceRes\n', performanceRes);
+    }) 
+  }
+  const urlToload = (url) => {
+    ipcRenderer.send('openwindow', url);
   }
 
   return (
     <div className="App">
       <Layout>
         <SearchView requestToRes={requestToRes}></SearchView>
-        <ResultView requestRes={requestRes} performanceRes={performanceRes}></ResultView>
+        <ResultView urlToloadNewWindow={urlToload} requestRes={requestRes} performanceRes={performanceRes}></ResultView>
       </Layout>
     </div>
   );

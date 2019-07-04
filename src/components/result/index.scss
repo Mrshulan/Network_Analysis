@@ -1,0 +1,131 @@
+.result-tab {
+  margin-bottom: 5px;
+  color: rgba($color: #000000, $alpha: .5);
+  .active-tabItem {
+    display: inline-block;
+    height: 30px;
+    background: #ff5d00;
+    padding: 0 8px;
+    line-height: 30px;
+    border-radius: 4px;
+    cursor: pointer;
+    &:hover {
+      box-shadow: rgba(0,0,0,.3) 0 0 5px inset;
+    }
+  }
+  .tabItem {
+    display: inline-block;
+    height: 30px;
+    background: #7ddb11;
+    padding: 0 8px;
+    line-height: 30px;
+    border-radius: 4px;
+    cursor: pointer;
+    &:hover {
+      box-shadow: rgba(0,0,0,.3) 0 0 5px inset;
+    }
+  }
+}
+
+.result-error {
+  color: #c91010;
+  text-indent: 10px;
+  .result-error-reason {
+    text-indent: 30px;
+  }
+}
+.request-wrapper {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  .request-disc {
+    display: flex;
+  }
+  .request {
+    display: flex;
+    justify-content: space-between;
+    // align-items: center;
+    width: 100%;
+    height: 100%;
+    .request-col {
+      width: 10%;
+      &:nth-child(1) {
+        flex: 1;
+        width: 50%;
+      }
+      .col-item {
+        .col-header {
+          width: 100%;
+          background: #FCFBFC;
+          font-size: 17px;
+          font-weight: 700;
+          text-align: center;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        .col-content {
+          width: 100%;
+          margin-top: 5px;
+          background: #FCFBFC;
+          font-size: 15px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          .urllink {
+            position: relative;
+            padding-left: 20px;
+            &::before {
+              position: absolute;
+              left: 0;
+              top: 0;
+              width: 8px;
+              height: 100%;
+              background: #23e0bd;
+              content: '';
+              transition: all .3s ease-in;
+            }
+            &:hover {
+              color: #93a81c;
+              &::before {
+                width: 20px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.preformance-wrapper {
+  // .preformance-inner {
+    .performance-res {
+      .performance-row{
+        background: #FCFBFC;
+        position: relative;
+        margin-top: 5px;
+        padding-left: 20px;
+        font-size: 15px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        &::before {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 8px;
+          height: 100%;
+          background: #23e0bd;
+          content: '';
+          transition: all .3s ease-in;
+        }
+        &:hover {
+          &::before {
+            width: 20px;
+          }
+        }
+      }
+    }
+  // }
+}

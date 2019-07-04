@@ -1,58 +1,28 @@
 // 文档 https://electronjs.org/docs/api/menu-item
 const {
-  Menu
+  Menu,
+  app
 } = require('electron');
 
-// 菜单项目
+// Create the Application's main menu(解决一些常用快捷键)
 let menus = [{
-    label: '文件',
-    submenu: [{
-        label: '新建文件',
-        accelerator: 'ctrl+n', // 绑定快捷键
-        click: function () { // 绑定事件
-          console.log('新建文件')
-        }
-      },
-      {
-        type: 'separator'
-      },
-      {
-        label: '新建窗口',
-        click: function () {
-          console.log('新建窗口')
-        }
-      }
-    ]
-  },
-  {
-    label: '编辑',
-    submenu: [{
-        label: '复制',
-        role: 'copy' // 调用内置角色实现对应功能
-      },
-      {
-        type: 'separator'
-      },
-      {
-        label: '剪切',
-        role: 'cut' // 调用内置角色实现对应功能
-      }
-    ]
-  },
-  {
-    label: '视图',
-    submenu: [{
-        label: '浏览'
-      },
-      {
-        type: 'separator'
-      },
-      {
-        label: '搜索'
-      }
-    ]
-  }
-]
+  label: "Application",
+  submenu: [
+      { label: "About Network", selector: "orderFrontStandardAboutPanel:" },
+      { type: "separator" },
+      { label: "Quit", accelerator: "Command+Q", click: function() { app.quit(); }}
+  ]}, {
+  label: "Edit",
+  submenu: [
+      { label: "Undo", accelerator: "CmdOrCtrl+Z", selector: "undo:" },
+      { label: "Redo", accelerator: "Shift+CmdOrCtrl+Z", selector: "redo:" },
+      { type: "separator" },
+      { label: "Cut", accelerator: "CmdOrCtrl+X", selector: "cut:" },
+      { label: "Copy", accelerator: "CmdOrCtrl+C", selector: "copy:" },
+      { label: "Paste", accelerator: "CmdOrCtrl+V", selector: "paste:" },
+      { label: "Select All", accelerator: "CmdOrCtrl+A", selector: "selectAll:" }
+  ]}
+];
 
 let m = Menu.buildFromTemplate(menus);
 Menu.setApplicationMenu(m);

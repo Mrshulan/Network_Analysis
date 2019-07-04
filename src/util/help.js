@@ -1,6 +1,3 @@
-// const fs = require('fs');
-// const data = fs.readFileSync('../html/index.html', 'utf-8').trim()
-
 module.exports = {
   bodyToRequest: (data) => {
     let matchRes = {
@@ -64,8 +61,15 @@ module.exports = {
         mimeType,
         protocol,
         timing: { receiveHeadersEnd=0 }={},
-        headers: { "Content-Length": contentLength=0 },
+        headers,
       } = item;
+      // 区别protocol是‘h2'
+      let contentLength = 0;
+      if(headers["Content-Length"]) {
+        contentLength = headers['Content-Length'];
+      } else if (headers["content-length"]) {
+        contentLength = headers['content-length']
+      }
 
       let name = '';
       // 如果是真实请求路径

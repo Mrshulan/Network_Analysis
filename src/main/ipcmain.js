@@ -1,4 +1,4 @@
-const { ipcMain } = require('electron');
+var { ipcMain } = require('electron');
 const CDP = require('chrome-remote-interface');
 const { bodyToRequest } = require('../util/help');
 
