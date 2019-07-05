@@ -12,19 +12,19 @@ function App() {
       mimeType: "text/html",
       name: "https://www.baidu.com/",
       protocol: "http/1.1",
-      receiveHeadersEnd: 107.011,
+      receiveHeadersEnd: 0,
       status: 200,
       url: "https://www.baidu.com/",
     }
   ]);
   const [ performanceRes, setPerformanceRes ] = useState({
-    dns: 18,
-    domReady: 47,
-    load: 339,
+    dns: 0,
+    domReady: 0,
+    load: 0,
     redirect: 0,
-    request: 54,
-    response: 22,
-    tcp: 34,
+    request: 0,
+    response: 0,
+    tcp: 0,
   });
   
   const requestToRes = (target_url) => {

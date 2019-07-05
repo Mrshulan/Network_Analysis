@@ -9,7 +9,7 @@ let mainWindow;
 function createWindow () {
   // 自定义窗口巴拉的
   mainWindow = new BrowserWindow({
-    width: 800,
+    width: 1200,
     height: 600,
     // 完整支持node
     webPreferences: {
@@ -19,14 +19,14 @@ function createWindow () {
 
   // 加载应用
   mainWindow.loadURL(url.format({
-    pathname: path.join(__dirname, 'index.html'),
+    pathname: path.join(__dirname, '../build/index.html'),
     protocol: 'file:',
     // 如果协议后面需要两个 //
     slashes: true
   }))
 
-  // 打开开发者工具，默认不打开
-  mainWindow.webContents.openDevTools();
+  // // 打开开发者工具，默认不打开
+  // mainWindow.webContents.openDevTools();
   // 关闭window时触发
   mainWindow.on('closed', function () {
     mainWindow = null;
@@ -34,8 +34,8 @@ function createWindow () {
 
 
   // 加载主进程相关
-  require('./src/main/menu');
-  require('./src/main/ipcmain');
+  require('./main/menu');
+  require('./main/ipcmain');
 }
 
 // 当Electron完成初始化的时候 准备创建 浏览器窗口
@@ -57,4 +57,4 @@ app.on('activate', function() {
   }
 })
 
-// 可以在这里引入其他全局的 js脚本(比方说快捷键)
+// 可以在这里引入其他全局的 js脚本(比方说快捷键shotcut)

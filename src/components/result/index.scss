@@ -51,7 +51,10 @@
       width: 10%;
       &:nth-child(1) {
         flex: 1;
-        width: 50%;
+        width: 45%;
+      }
+      &:nth-child(3) {
+        width: 15%;
       }
       .col-item {
         .col-header {

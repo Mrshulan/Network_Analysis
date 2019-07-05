@@ -1,20 +1,18 @@
 import React from 'react';
 import './index.scss'
 
-// const { ipcRenderer } = window.require('electron');
-
 const SearchView = function ({requestToRes}) {
   let searchInput = null;
 
   const urlSubmit = () => {
-    let url = searchInput.value || 'http://baidu.com';
+    let url = searchInput.value || 'https://baidu.com';
     // http://.../foo.html(可行[主机名匹配规则简单]) 要在正则匹配的复杂性和完整性取得平衡
     let patternURL = /^https?:\/\/([^/:]+)(:(\d+))?(\/.*)?$/
     if(patternURL.test(url)) {
       requestToRes(url);
     } else {
       // 检测正确性
-      new window.Notification('请检查URL', { body: 'URL输入有问题'});
+      new window.Notification('请检查URL', { body: 'URL输入有问题', icon: 'http://mrshulan.xin/blog/static/media/logo.0d44dcd5.jpg'});
     }
   }
 

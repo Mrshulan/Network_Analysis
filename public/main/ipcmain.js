@@ -1,10 +1,19 @@
-var { ipcMain } = require('electron');
+const { ipcMain, BrowserWindow } = require('electron');
+let win = null;
 const CDP = require('chrome-remote-interface');
-const { bodyToRequest } = require('../util/help');
+
+// 监听开窗口
+ipcMain.on('openwindow', (e, url) => {
+  win = new BrowserWindow({
+    width: 500,
+    height: 300,
+  });
+  win.loadURL(url);
+  win.on('closed', () => {win = null;});
+})
 
 // 主进程处理渲染进程发来的数据, 并反馈给渲染进程
 ipcMain.on('sendFeedback', (event, target_url) => {
-
   let result = {
     success: [],
     faild: [],
@@ -15,7 +24,10 @@ ipcMain.on('sendFeedback', (event, target_url) => {
     // extract domains
     const { Network, Page, Runtime } = client;
     
-    // setup handlers
+    // Network.requestWillBeSent(每个http请求发送前回调)
+    // Network.responseReceived(每次接到http响应的回调)
+    // Network.loadingFailed(请求加载失败的回调)
+    // Network.loadingFinished(请求加载完成的回调) 
     Network.requestWillBeSent((data) => {
         // console.log(params.request.url);
         // console.log(params.request);
@@ -48,7 +60,7 @@ ipcMain.on('sendFeedback', (event, target_url) => {
      
       });
     
-    // enable events then start!
+    // enable events then start...
     Promise.all([
           Network.enable(),
           Page.enable()
@@ -62,40 +74,5 @@ ipcMain.on('sendFeedback', (event, target_url) => {
   }).on('error', (err) => {
       console.error(err);
   });
-
-  // net模块只能够监听一次请求
-  // const result = {
-  //   status: null,
-  //   headers: null,
-  //   body: ''
-  // };
-  // const {net} = require('electron')
-  
-  // const request = net.request(data || 'https://baidu.com')
-  // request.on('response', (response) => {
-  //   result.status = response.status;
-  //   result.headers = response.headers;
-
-  //   response.on('data', (chunk) => {
-  //     // console.log(`正文: ${chunk}`)
-  //     result.body += chunk;
-  //   })
-
-  //   response.on('end', () => {
-  //     console.log('没有更多的数据响应.')
-  //     var info = bodyToRequest(result.body)
-  //     result.info = info;
-  //     event.sender.send('sendFeedbackToRender', result);
-  //   })
-  // })
-  // request.end()
 })
 
-// 主进程和渲染进程同步通信
-ipcMain.on('sendsync', (event, data) => {
-
-  // TODO 同步数据data 一顿操作
-  // TODO
-  // 反馈回去
-  event.returnValue = '同步通信结果， 来自主进程';
-})

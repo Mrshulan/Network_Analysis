@@ -4,7 +4,7 @@ const {
   app
 } = require('electron');
 
-// Create the Application's main menu(解决一些常用快捷键)
+// Create the Application's main menu(mac解决一些常用快捷键失效)
 let menus = [{
   label: "Application",
   submenu: [
