@@ -31,6 +31,9 @@ function App() {
     console.log(`正在查询${target_url}`);
     ipcRenderer.send('sendFeedback', target_url);
     ipcRenderer.on('sendFeedbackToRender', (e, data) => {
+      if(typeof data === 'string') {
+        new window.Notification('请先开启headless chrome!', { body: data, icon: "http://mrshulan.xin/avatar/default.jpg"});
+      }
       let requestRes = networkToRequest(data.success);
       let performanceRes = performanceParser(data.performanceInfo);
       setRequestRes(requestRes);

@@ -72,7 +72,9 @@ ipcMain.on('sendFeedback', (event, target_url) => {
       });
 
   }).on('error', (err) => {
+      // headless 未开启9222端口时候
       console.error(err);
+      event.sender.send('sendFeedbackToRender', "Error: connect ECONNREFUSED 127.0.0.1:9222");
   });
 })
 
