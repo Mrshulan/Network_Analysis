@@ -10,7 +10,7 @@
 
 所以我选择了一个集成Chromium & Node.js & Native APIS的Electron来开发一个这样的桌面工具。
 
-![Electron架构](http://qiniu.mrshulan.com/electron%E6%9E%B6%E6%9E%84.png)
+![Electron架构](http://qiniu.mrshulan.xin/electron%E6%9E%B6%E6%9E%84.png)
 
 ## Electron的开发简介
 
@@ -20,7 +20,7 @@
 
 Electron的学习过程其实很简单，跟着文档写一些[demo](https://github.com/Mrshulan/Electron_network/tree/master/demo)即可,这里想总结的是里边的进程关系
 
-![Electron进程](http://qiniu.mrshulan.com/electron%E8%BF%9B%E7%A8%8B.png)
+![Electron进程](http://qiniu.mrshulan.xin/electron%E8%BF%9B%E7%A8%8B.png)
 
 这个图里边可以看到一个**主进程(ipcMain)**管理着多个**渲染进程(ipcRenderer)**(每个渲染进程相互独立)
 
@@ -88,15 +88,15 @@ Electron提供一个net模块，但是仅仅只支持一次请求，比方说请
 
 以之前做个博客项目测试一波(那个静态资源的size为何是0可以思考思考🤔)
 
-![运行图片](http://qiniu.mrshulan.com/networkanalysis%E8%BF%90%E8%A1%8C%E5%9B%BE.png)
+![运行图片](http://qiniu.mrshulan.xin/networkanalysis%E8%BF%90%E8%A1%8C%E5%9B%BE.png)
 
 CSR performance测试结果([线上地址](http://mrshulan.xin/blog/) [项目地址](https://github.com/Mrshulan/Muti_ShareBlog_FE))
 
-![CSR performance](http://qiniu.mrshulan.com/networkblog%E6%B5%8B%E8%AF%95.png)
+![CSR performance](http://qiniu.mrshulan.xin/networkblog%E6%B5%8B%E8%AF%95.png)
 
 SSR performance测试结果([线上地址](http://mrshulan.xin/blogssr/) [项目地址](https://github.com/Mrshulan/Muti_ShareBlog_SSR))
 
-![ssr performance](http://qiniu.mrshulan.com/networkblogssr%E6%B5%8B%E8%AF%95.png)
+![ssr performance](http://qiniu.mrshulan.xin/networkblogssr%E6%B5%8B%E8%AF%95.png)
 
 ## 其他
 
